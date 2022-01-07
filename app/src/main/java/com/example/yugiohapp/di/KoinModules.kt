@@ -1,16 +1,22 @@
 package com.example.yugiohapp.di
 
 import com.example.yugiohapp.rest.CardAPI
+import com.example.yugiohapp.rest.CardsRepository
+import com.example.yugiohapp.rest.CardsRepositoryImpl
+import com.example.yugiohapp.viewmodel.CardsViewModel
 import com.google.gson.Gson
 import com.google.gson.GsonBuilder
 import okhttp3.OkHttpClient
 import okhttp3.logging.HttpLoggingInterceptor
+import org.koin.androidx.viewmodel.dsl.viewModel
 import org.koin.dsl.module
 import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory
 import java.util.concurrent.TimeUnit
 
 val networkModule = module{
+
+    fun provideCardsRepo(cardAPI: CardAPI): CardsRepository = CardsRepositoryImpl(cardAPI)
 
     fun provideGson() = GsonBuilder().create()
 
@@ -39,4 +45,11 @@ val networkModule = module{
     single { provideLoggingInterceptor() }
     single { provideOkHttpClient(get()) }
     single { provideCardsApi(get(), get()) }
+    single { provideCardsRepo(get()) }
+}
+
+val viewModelModule = module {
+    viewModel {
+        CardsViewModel(get())
+    }
 }

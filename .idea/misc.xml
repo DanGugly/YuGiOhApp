@@ -4,6 +4,9 @@
     <option name="filePathToZoomLevelMap">
       <map>
         <entry key="app/src/main/res/layout/activity_main.xml" value="0.2857789855072464" />
+        <entry key="app/src/main/res/layout/fragment_card_details.xml" value="0.2817028985507246" />
+        <entry key="app/src/main/res/layout/fragment_cards.xml" value="0.2817028985507246" />
+        <entry key="app/src/main/res/layout/yugioh_cards_view.xml" value="0.2817028985507246" />
       </map>
     </option>
   </component>
