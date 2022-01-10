@@ -18,6 +18,7 @@ class CardsViewModel(
     val cardsLiveData : LiveData<UIState> get() = _cardsLiveData
 
     fun subscribeToCardsInfo(){
+        collectCardInfo()
         launch {
             cardsRepository.getCardList()
         }
